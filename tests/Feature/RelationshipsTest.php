@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Comment;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,6 +28,24 @@ class RelationshipsTest extends TestCase
         Task::create(['name' => 'Some task']);
 
         $response = $this->get('/tasks');
+        $response->assertStatus(200);
+    }
+
+    // TASK: define the two-level relationship in the User model
+    public function test_show_users_comments()
+    {
+        $user = User::factory()->create();
+        $task = Task::create([
+            'users_id' => $user->id,
+            'name' => 'Some task'
+        ]);
+        Comment::create([
+            'task_id' => $task->id,
+            'name' => 'Some name',
+            'comment' => 'Some comment'
+        ]);
+
+        $response = $this->get('/users/' . $user->id);
         $response->assertStatus(200);
     }
 }

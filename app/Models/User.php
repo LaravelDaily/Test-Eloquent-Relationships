@@ -44,6 +44,12 @@ class User extends Authenticatable
 
     public function tasks()
     {
+        // TASK: fix this by adding a parameter
         return $this->hasMany(Task::class);
+    }
+
+    public function comments()
+    {
+        // TASK: add the code here for two-level relationship
     }
 }

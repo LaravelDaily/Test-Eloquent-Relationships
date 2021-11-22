@@ -43,3 +43,11 @@ Test method `test_task_with_no_user()`.
 
 ---
 
+## Task 3. Two-level Relationship.
+
+In the route `/users/{user}`, the table should load the comments that are written on the task that belong to a user. Define the relationship from User to Comment in the User model, so that the Blade file users/show.blade.php would work.
+
+Test method `test_show_users_comments()`.
+
+---
+

@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('tasks', [TaskController::class, 'index']);
 Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
+
+Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
