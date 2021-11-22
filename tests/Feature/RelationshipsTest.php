@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\Comment;
+use App\Models\Role;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class RelationshipsTest extends TestCase
@@ -46,6 +48,20 @@ class RelationshipsTest extends TestCase
         ]);
 
         $response = $this->get('/users/' . $user->id);
+        $response->assertStatus(200);
+    }
+
+    // TASK: pivot table name in the list
+    public function test_show_roles_with_users()
+    {
+        $user = User::factory()->create();
+        $role = Role::create(['name' => 'Admin']);
+        DB::table('users_roles')->insert([
+            'role_id' => $role->id,
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->get('/roles');
         $response->assertStatus(200);
     }
 }

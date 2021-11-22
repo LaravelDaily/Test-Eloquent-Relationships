@@ -51,3 +51,11 @@ Test method `test_show_users_comments()`.
 
 ---
 
+## Task 4. BelongsToMany - Pivot Table Name.
+
+In the route `/roles`, the table should load the roles with the number of users belonging to them. But the relationship in `app/Models/Role.php` model is defined incorrectly, fix that relationship definition.
+
+Test method `test_show_roles_with_users()`.
+
+---
+
