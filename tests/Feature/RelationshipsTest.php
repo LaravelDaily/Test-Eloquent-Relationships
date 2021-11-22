@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Attachment;
 use App\Models\Comment;
 use App\Models\Country;
+use App\Models\Project;
 use App\Models\Role;
 use App\Models\Task;
 use App\Models\Team;
@@ -132,5 +133,24 @@ class RelationshipsTest extends TestCase
         $response->assertSee('something.pdf');
         $response->assertSee('Task');
         $response->assertSee('Comment');
+    }
+
+    // TASK: add a record to belongstomany relationship
+    public function test_belongstomany_add()
+    {
+        $user = User::factory()->create();
+        $project = Project::create(['name' => 'Some project']);
+
+        $response = $this->actingAs($user)->post('/projects', [
+            'project_id' => $project->id,
+            'start_date' => now()->toDateString()
+        ]);
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('project_user', [
+            'project_id' => $project->id,
+            'user_id' => $user->id,
+            'start_date' => now()->toDateString()
+        ]);
     }
 }

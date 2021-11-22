@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         // TASK: add the code here for two-level relationship
     }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class)->withPivot('start_date');
+    }
 }

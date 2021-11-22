@@ -75,11 +75,19 @@ Test method `test_countries_with_team_size()`.
 
 ---
 
-## Task 6. Polymorphic Attachments
+## Task 7. Polymorphic Attachments
 
 In the route `/attachments`, the table should show the filenames and the class names of Task and Comment models. Fix the `app/Models/Attachment.php` relationship to make it work.
 
 Test method `test_attachments_polymorphic()`.
+
+---
+
+## Task 8. Add BelongsToMany Row
+
+In the POST route `/projects`, the project should be saved for a logged-in user, with start_date field from $request. Write that sentence in the Controller.
+
+Test method `test_belongstomany_add()`.
 
 ---
 
