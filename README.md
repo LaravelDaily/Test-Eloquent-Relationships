@@ -75,3 +75,11 @@ Test method `test_countries_with_team_size()`.
 
 ---
 
+## Task 6. Polymorphic Attachments
+
+In the route `/attachments`, the table should show the filenames and the class names of Task and Comment models. Fix the `app/Models/Attachment.php` relationship to make it work.
+
+Test method `test_attachments_polymorphic()`.
+
+---
+

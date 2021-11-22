@@ -28,3 +28,5 @@ Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
 Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index']);
 
 Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index']);
+
+Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']);
