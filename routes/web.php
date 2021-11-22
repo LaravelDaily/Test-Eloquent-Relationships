@@ -24,3 +24,5 @@ Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
 Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
 
 Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
+
+Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index']);

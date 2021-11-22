@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Comment;
 use App\Models\Role;
 use App\Models\Task;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
@@ -63,5 +64,24 @@ class RelationshipsTest extends TestCase
 
         $response = $this->get('/roles');
         $response->assertStatus(200);
+    }
+
+    // TASK: pivot table with extra fields
+    public function test_teams_with_users()
+    {
+        $user = User::factory()->create();
+        $team = Team::create(['name' => 'Team 1']);
+        $createdAt = now()->toDateTimeString();
+        $position = 'Manager';
+        DB::table('team_user')->insert([
+            'team_id' => $team->id,
+            'user_id' => $user->id,
+            'position' => $position,
+            'created_at' => $createdAt
+        ]);
+
+        $response = $this->get('/teams');
+        $response->assertSee($createdAt);
+        $response->assertSee($position);
     }
 }
