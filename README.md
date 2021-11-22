@@ -67,3 +67,11 @@ Test method `test_teams_with_users()`.
 
 ---
 
+## Task 6. HasMany - Average from Field Value
+
+In the route `/countries`, the table should show the countries with average team size. Fix the Controller to load the relationship number, as it is expected in the Blade.
+
+Test method `test_countries_with_team_size()`.
+
+---
+

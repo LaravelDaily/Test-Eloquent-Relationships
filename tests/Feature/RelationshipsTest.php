@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Comment;
+use App\Models\Country;
 use App\Models\Role;
 use App\Models\Task;
 use App\Models\Team;
@@ -83,5 +84,24 @@ class RelationshipsTest extends TestCase
         $response = $this->get('/teams');
         $response->assertSee($createdAt);
         $response->assertSee($position);
+    }
+
+    // TASK: average number from the relationship
+    public function test_countries_with_team_size()
+    {
+        $country = Country::create(['name' => 'United Kingdom']);
+        Team::create([
+            'name' => 'Team 1',
+            'country_id' => $country->id,
+            'size' => 3
+        ]);
+        Team::create([
+            'name' => 'Team 2',
+            'country_id' => $country->id,
+            'size' => 5
+        ]);
+
+        $response = $this->get('/countries');
+        $response->assertSee('avg team size 4');
     }
 }

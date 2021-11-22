@@ -26,3 +26,5 @@ Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']
 Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
 
 Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index']);
+
+Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index']);
