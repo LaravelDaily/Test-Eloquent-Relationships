@@ -33,90 +33,13 @@ Test method `test_user_create_task()`.
 
 ---
 
-## Task 2. Get Data List.
+## Task 2. BelongsTo with Empty Relationship.
 
-In `app/Http/Controllers/UserController.php` file method `index()`, write Eloquent query to get 3 newest users with verified emails, ordered from newest to oldest. Transform this SQL query into Eloquent:
+In the route `/tasks`, the table is loading with error, if it can't find the user related to the task. Fix this: the table should load and just show empty space in case of no user.
 
-```
-select * from users where email_verified_at is not null order by created_at desc limit 3
-```
+There are multiple ways how to fix this, choose whichever way works for you.
 
-Test method `test_get_filtered_list()`.
+Test method `test_task_with_no_user()`.
 
 ---
 
-## Task 3. Get a Single Record.
-
-In `app/Http/Controllers/UserController.php` file method `show($userId)`, fill in the `$user` value with finding the user by `users.id = $userId`. If the user is not found, show default Laravel 404 page.
-
-Test method `test_find_user_or_show_404_page()`.
-
----
-
-## Task 4. Get a Single Record or Create a New Record.
-
-In `app/Http/Controllers/UserController.php` file method `check_create()`, find the user by name and email. If the user is not found, create it (with random password).
-
-Test method `test_check_or_create_user()`.
-
----
-
-## Task 5. Create a New Record.
-
-In `app/Http/Controllers/ProjectController.php` file method `store()`, creating the project will fail. Fix the underlying issue, to make it work.
-
-Test method `test_create_project()`.
-
----
-
-## Task 6. Mass Update.
-
-In `app/Http/Controllers/ProjectController.php` file method `mass_update()`, write the update SQL query as Eloquent statement.
-
-```
-update projects set name = $request->new_name where name = $request->old_name
-```
-
-Test method `test_mass_update_projects()`.
-
----
-
-## Task 7. Update or New Record.
-
-In `app/Http/Controllers/UserController.php` file method `check_update()`, find a user by $name and update it with $email. If not found, create a user with $name, $email and random password
-
-Test method `test_check_or_update_user()`.
-
----
-
-## Task 8. Mass Delete Users.
-
-In `app/Http/Controllers/UserController.php` file method `destroy()`, delete all users by the array of `$request->users`
-
-Test method `test_mass_delete_users()`.
-
----
-
-## Task 9. Soft Deletes.
-
-In `app/Http/Controllers/ProjectController.php` file method `destroy()`, change Eloquent statement to still return the soft-deleted records in the list of `$projects`
-
-Test method `test_soft_delete_projects()`.
-
----
-
-## Task 10. Scopes with Filters.
-
-In `app/Http/Controllers/UserController.php` file method `only_active()`, make the main statement work and to filter records where email_verified_at is not null.
-
-Test method `test_active_users()`.
-
----
-
-## Task 11. Observers with New Record.
-
-In `app/Http/Controllers/ProjectController.php` file method `store_with_stats()`, create a separate Observer file with an event to perform a +1 in the stats table.
-
-Test method `test_insert_observer()`.
-
----

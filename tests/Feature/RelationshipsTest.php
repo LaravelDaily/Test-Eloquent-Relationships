@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -17,6 +18,15 @@ class RelationshipsTest extends TestCase
         $response = $this->actingAs($user)->post('/tasks', [
             'name' => 'Some task'
         ]);
+        $response->assertStatus(200);
+    }
+
+    // TASK: this table throws an error, fix it
+    public function test_task_with_no_user()
+    {
+        Task::create(['name' => 'Some task']);
+
+        $response = $this->get('/tasks');
         $response->assertStatus(200);
     }
 }
