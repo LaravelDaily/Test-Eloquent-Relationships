@@ -1,66 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Test Your Laravel Eloquent Relationships Skills
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This repository is a test for you: perform a set of tasks listed below, and fix the PHPUnit tests, which are currently intentionally failing.
 
-## About Laravel
+To test if all the functions work correctly, there are PHPUnit tests in `tests/Feature/RelationshipsTest.php` file.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+In the very beginning, if you run `php artisan test`, or `vendor/bin/phpunit`, all tests fail.
+Your task is to make those tests pass.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How to Submit Your Solution
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+If you want to submit your solution, you should make a Pull Request to the `main` branch.
+It will automatically run the tests via GitHub Actions and will show you/me if the test pass.
 
-## Learning Laravel
+If you don't know how to make a Pull Request, [here's my video with instructions](https://www.youtube.com/watch?v=vEcT6JIFji0).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This task is mostly self-served, so I'm not planning review or merge the Pull Requests. This test is for yourselves to assess your skills, the automated tests will be your answer if you passed the test :)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Questions / Problems?
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+If you're struggling with some tasks, or you have suggestions how to improve the task, create a GitHub Issue.
 
-### Premium Partners
+Good luck!
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+---
 
-## Contributing
+## Task 1. HasMany Defined Incorrectly.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+In `app/Models/User.php` file, the relationship is missing some parameter. Fix this.
 
-## Code of Conduct
+Test method `test_user_create_task()`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Task 2. Get Data List.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+In `app/Http/Controllers/UserController.php` file method `index()`, write Eloquent query to get 3 newest users with verified emails, ordered from newest to oldest. Transform this SQL query into Eloquent:
 
-## License
+```
+select * from users where email_verified_at is not null order by created_at desc limit 3
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Test method `test_get_filtered_list()`.
+
+---
+
+## Task 3. Get a Single Record.
+
+In `app/Http/Controllers/UserController.php` file method `show($userId)`, fill in the `$user` value with finding the user by `users.id = $userId`. If the user is not found, show default Laravel 404 page.
+
+Test method `test_find_user_or_show_404_page()`.
+
+---
+
+## Task 4. Get a Single Record or Create a New Record.
+
+In `app/Http/Controllers/UserController.php` file method `check_create()`, find the user by name and email. If the user is not found, create it (with random password).
+
+Test method `test_check_or_create_user()`.
+
+---
+
+## Task 5. Create a New Record.
+
+In `app/Http/Controllers/ProjectController.php` file method `store()`, creating the project will fail. Fix the underlying issue, to make it work.
+
+Test method `test_create_project()`.
+
+---
+
+## Task 6. Mass Update.
+
+In `app/Http/Controllers/ProjectController.php` file method `mass_update()`, write the update SQL query as Eloquent statement.
+
+```
+update projects set name = $request->new_name where name = $request->old_name
+```
+
+Test method `test_mass_update_projects()`.
+
+---
+
+## Task 7. Update or New Record.
+
+In `app/Http/Controllers/UserController.php` file method `check_update()`, find a user by $name and update it with $email. If not found, create a user with $name, $email and random password
+
+Test method `test_check_or_update_user()`.
+
+---
+
+## Task 8. Mass Delete Users.
+
+In `app/Http/Controllers/UserController.php` file method `destroy()`, delete all users by the array of `$request->users`
+
+Test method `test_mass_delete_users()`.
+
+---
+
+## Task 9. Soft Deletes.
+
+In `app/Http/Controllers/ProjectController.php` file method `destroy()`, change Eloquent statement to still return the soft-deleted records in the list of `$projects`
+
+Test method `test_soft_delete_projects()`.
+
+---
+
+## Task 10. Scopes with Filters.
+
+In `app/Http/Controllers/UserController.php` file method `only_active()`, make the main statement work and to filter records where email_verified_at is not null.
+
+Test method `test_active_users()`.
+
+---
+
+## Task 11. Observers with New Record.
+
+In `app/Http/Controllers/ProjectController.php` file method `store_with_stats()`, create a separate Observer file with an event to perform a +1 in the stats table.
+
+Test method `test_insert_observer()`.
+
+---
