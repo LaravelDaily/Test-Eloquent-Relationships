@@ -153,4 +153,21 @@ class RelationshipsTest extends TestCase
             'start_date' => now()->toDateString()
         ]);
     }
+
+    // TASK: show only the users who have at least one project
+    public function test_filter_users()
+    {
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
+        $project = Project::create(['name' => 'Some project']);
+        DB::table('project_user')->insert([
+            'project_id' => $project->id,
+            'user_id' => $user1->id,
+            'start_date' => now()->toDateString()
+        ]);
+
+        $response = $this->get('/users');
+        $response->assertSee($user1->email);
+        $response->assertDontSee($user2->email);
+    }
 }

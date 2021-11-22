@@ -91,3 +91,11 @@ Test method `test_belongstomany_add()`.
 
 ---
 
+## Task 9. Filter BelongsToMany Rows
+
+In the route `/users`, the list should show only the users with at least one project. Fix the Controller to add this filter.
+
+Test method `test_filter_users()`.
+
+---
+
