@@ -35,7 +35,7 @@ Test method `test_user_create_task()`.
 
 ## Task 2. BelongsTo with Empty Relationship.
 
-In the route `/tasks`, the table is loading with error, if it can't find the user related to the task. Fix this: the table should load and just show empty space in case of no user.
+In the route `/tasks`, the table is loading with error, if it can't find the user related to the task. Fix this: the table should load, showing an empty space where the user name should have been.
 
 There are multiple ways how to fix this, choose whichever way works for you.
 
