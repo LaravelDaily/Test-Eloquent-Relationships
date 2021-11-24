@@ -34,6 +34,7 @@ class RelationshipsTest extends TestCase
         Task::create(['name' => 'Some task']);
 
         $response = $this->get('/tasks');
+        $response->assertSeeText('Some task');
         $response->assertStatus(200);
     }
 
