@@ -16,3 +16,5 @@ yarn-error.log
 /.vagrant
 after.sh
 aliases
+.sudo_as_admin_successful
+.bash_aliases
