@@ -14,5 +14,6 @@ class Attachment extends Model
     public function attachable()
     {
         // TASK: fill in the code to make it work
+        return $this->morphTo();
     }
 }
