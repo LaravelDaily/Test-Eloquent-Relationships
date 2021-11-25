@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->whereNotNull('project_id');
 
         return view('users.index', compact('users'));
     }
