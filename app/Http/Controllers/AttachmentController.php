@@ -8,7 +8,7 @@ class AttachmentController extends Controller
 {
     public function index()
     {
-        $attachments = Attachment::all();
+        $attachments = Attachment::with('attachable')->get();
 
         return view('attachments.index', compact('attachments'));
     }
