@@ -15,4 +15,14 @@ class Comment extends Model
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function attachment()
+    {
+        return $this->morphMany(Attachment::class,'attachable');
+    }
 }
