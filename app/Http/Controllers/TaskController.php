@@ -18,7 +18,7 @@ class TaskController extends Controller
     {
         // TASK: find out why this sentence fails, and fix it in Eloquent Model
         auth()->user()->tasks()->create([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return 'Success';
