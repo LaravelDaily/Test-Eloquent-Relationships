@@ -9,9 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::whereHas('projects', function (Builder $query) {
-            $query->where('name', '!=', null);
-        }, '>=', 1)->get();
+        $users = User::has('projects')->get();
 
         return view('users.index', compact('users'));
     }
