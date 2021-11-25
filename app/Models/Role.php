@@ -13,7 +13,7 @@ class Role extends Model
 
     public function users()
     {
-        // TASK: fix this by adding a parameter
-        return $this->belongsToMany(User::class);
+        // TASK: fix this by adding a parameter [done]
+        return $this->belongsToMany(User::class, 'users_roles');
     }
 }
