@@ -13,6 +13,9 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => null,
+            'email' => null,
+        ]);
     }
 }
