@@ -8,7 +8,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::withExists('projects')->having('projects_exists', 1)->get();
+        $users = User::withExists('projects')->get()->filter(function($user) {
+           return $user->projects_exists; 
+        });
 
         return view('users.index', compact('users'));
     }
