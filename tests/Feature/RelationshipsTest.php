@@ -18,7 +18,7 @@ class RelationshipsTest extends TestCase
 {
     use RefreshDatabase;
 
-    // TASK: find out why this relationship fails, and fix it in Eloquent Model
+    // TASK: find out why this relationship fails, and fix it in Eloquent Model +
     public function test_user_create_task()
     {
         $user = User::factory()->create();
@@ -28,7 +28,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: this table throws an error, fix it
+    // TASK: this table throws an error, fix it +
     public function test_task_with_no_user()
     {
         Task::create(['name' => 'Some task']);
@@ -38,7 +38,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: define the two-level relationship in the User model
+    // TASK: define the two-level relationship in the User model +
     public function test_show_users_comments()
     {
         $user = User::factory()->create();
@@ -56,7 +56,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: pivot table name in the list
+    // TASK: pivot table name in the list +
     public function test_show_roles_with_users()
     {
         $user = User::factory()->create();
@@ -70,7 +70,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: pivot table with extra fields
+    // TASK: pivot table with extra fields +
     public function test_teams_with_users()
     {
         $user = User::factory()->create();
@@ -89,7 +89,7 @@ class RelationshipsTest extends TestCase
         $response->assertSee($position);
     }
 
-    // TASK: average number from the relationship
+    // TASK: average number from the relationship +
     public function test_countries_with_team_size()
     {
         $country = Country::create(['name' => 'United Kingdom']);
@@ -136,7 +136,7 @@ class RelationshipsTest extends TestCase
         $response->assertSee('Comment');
     }
 
-    // TASK: add a record to belongstomany relationship
+    // TASK: add a record to belongstomany relationship +
     public function test_belongstomany_add()
     {
         $user = User::factory()->create();
@@ -155,7 +155,7 @@ class RelationshipsTest extends TestCase
         ]);
     }
 
-    // TASK: show only the users who have at least one project
+    // TASK: show only the users who have at least one project +
     public function test_filter_users()
     {
         $user1 = User::factory()->create();
