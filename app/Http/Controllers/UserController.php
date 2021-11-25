@@ -8,8 +8,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::withCount('projects')->having('projects_count', '>', 0)->get();
-
+        $data = User::withCount('projects')->get();
+        $users = $data->where('projects_count', '>', 0);
         return view('users.index', compact('users'));
     }
 
