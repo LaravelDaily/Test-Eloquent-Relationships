@@ -16,4 +16,9 @@ class Task extends Model
         return $this->belongsTo(User::class, 'users_id')
             ->withDefault();
     }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
+    }
 }
