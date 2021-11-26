@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
 
         try {
             User::factory()->count(100)->create();
+            DB::commit();
         }catch (Exception $exception) {
             DB::rollBack();
             throw new Exception($exception->getMessage());
