@@ -136,24 +136,24 @@ class RelationshipsTest extends TestCase
         $response->assertSee('Comment');
     }
 
-    // // TASK: add a record to belongstomany relationship
-    // public function test_belongstomany_add()
-    // {
-    //     $user = User::factory()->create();
-    //     $project = Project::create(['name' => 'Some project']);
+    // TASK: add a record to belongstomany relationship
+    public function test_belongstomany_add()
+    {
+        $user = User::factory()->create();
+        $project = Project::create(['name' => 'Some project']);
 
-    //     $response = $this->actingAs($user)->post('/projects', [
-    //         'project_id' => $project->id,
-    //         'start_date' => now()->toDateString()
-    //     ]);
-    //     $response->assertStatus(200);
+        $response = $this->actingAs($user)->post('/projects', [
+            'project_id' => $project->id,
+            'start_date' => now()->toDateString()
+        ]);
+        $response->assertStatus(200);
 
-    //     $this->assertDatabaseHas('project_user', [
-    //         'project_id' => $project->id,
-    //         'user_id' => $user->id,
-    //         'start_date' => now()->toDateString()
-    //     ]);
-    // }
+        $this->assertDatabaseHas('project_user', [
+            'project_id' => $project->id,
+            'user_id' => $user->id,
+            'start_date' => now()->toDateString()
+        ]);
+    }
 
     // // TASK: show only the users who have at least one project
     // public function test_filter_users()
