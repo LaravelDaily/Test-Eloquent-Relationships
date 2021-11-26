@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,25 +12,25 @@ use App\Http\Controllers\TaskController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', function () {
+Route::get('/', function ()
+{
     return view('welcome');
 });
 
-Route::get('tasks', [TaskController::class, 'index']);
-Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
+Route::get('tasks', [TaskController::class, 'index']); // done
+Route::post('tasks', [TaskController::class, 'store'])->middleware('auth'); // done
 
-Route::get('users', [\App\Http\Controllers\UserController::class, 'index']);
-Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
+Route::get('users', [\App\Http\Controllers\UserController::class, 'index']); // done
+Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']); // done
 
-Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
+Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']); // done
 
-Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index']);
+Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index']); // done
 
-Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index']);
+Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index']); // done
 
-Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']);
+Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']); // done
 
-Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
-
+Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth'); // done
