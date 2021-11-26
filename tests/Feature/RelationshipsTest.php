@@ -70,43 +70,43 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // // TASK: pivot table with extra fields
-    // public function test_teams_with_users()
-    // {
-    //     $user = User::factory()->create();
-    //     $team = Team::create(['name' => 'Team 1']);
-    //     $createdAt = now()->toDateTimeString();
-    //     $position = 'Manager';
-    //     DB::table('team_user')->insert([
-    //         'team_id' => $team->id,
-    //         'user_id' => $user->id,
-    //         'position' => $position,
-    //         'created_at' => $createdAt
-    //     ]);
+    // TASK: pivot table with extra fields
+    public function test_teams_with_users()
+    {
+        $user = User::factory()->create();
+        $team = Team::create(['name' => 'Team 1']);
+        $createdAt = now()->toDateTimeString();
+        $position = 'Manager';
+        DB::table('team_user')->insert([
+            'team_id' => $team->id,
+            'user_id' => $user->id,
+            'position' => $position,
+            'created_at' => $createdAt
+        ]);
 
-    //     $response = $this->get('/teams');
-    //     $response->assertSee($createdAt);
-    //     $response->assertSee($position);
-    // }
+        $response = $this->get('/teams');
+        $response->assertSee($createdAt);
+        $response->assertSee($position);
+    }
 
-    // // TASK: average number from the relationship
-    // public function test_countries_with_team_size()
-    // {
-    //     $country = Country::create(['name' => 'United Kingdom']);
-    //     Team::create([
-    //         'name' => 'Team 1',
-    //         'country_id' => $country->id,
-    //         'size' => 3
-    //     ]);
-    //     Team::create([
-    //         'name' => 'Team 2',
-    //         'country_id' => $country->id,
-    //         'size' => 5
-    //     ]);
+    // TASK: average number from the relationship
+    public function test_countries_with_team_size()
+    {
+        $country = Country::create(['name' => 'United Kingdom']);
+        Team::create([
+            'name' => 'Team 1',
+            'country_id' => $country->id,
+            'size' => 3
+        ]);
+        Team::create([
+            'name' => 'Team 2',
+            'country_id' => $country->id,
+            'size' => 5
+        ]);
 
-    //     $response = $this->get('/countries');
-    //     $response->assertSee('avg team size 4');
-    // }
+        $response = $this->get('/countries');
+        $response->assertSee('avg team size 4');
+    }
 
     // // TASK: polymorphic relations
     // public function test_attachments_polymorphic()
