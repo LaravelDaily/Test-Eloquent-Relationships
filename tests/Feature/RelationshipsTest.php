@@ -108,33 +108,33 @@ class RelationshipsTest extends TestCase
         $response->assertSee('avg team size 4');
     }
 
-    // // TASK: polymorphic relations
-    // public function test_attachments_polymorphic()
-    // {
-    //     $task = Task::create(['name' => 'Some task']);
-    //     $comment = Comment::create([
-    //         'task_id' => $task->id,
-    //         'name' => 'Some name',
-    //         'comment' => 'Some comment'
-    //     ]);
-    //     Attachment::create([
-    //         'filename' => 'something.jpg',
-    //         'attachable_id' => $task->id,
-    //         'attachable_type' => Task::class
-    //     ]);
-    //     Attachment::create([
-    //         'filename' => 'something.pdf',
-    //         'attachable_id' => $comment->id,
-    //         'attachable_type' => Comment::class
-    //     ]);
+    // TASK: polymorphic relations
+    public function test_attachments_polymorphic()
+    {
+        $task = Task::create(['name' => 'Some task']);
+        $comment = Comment::create([
+            'task_id' => $task->id,
+            'name' => 'Some name',
+            'comment' => 'Some comment'
+        ]);
+        Attachment::create([
+            'filename' => 'something.jpg',
+            'attachable_id' => $task->id,
+            'attachable_type' => Task::class
+        ]);
+        Attachment::create([
+            'filename' => 'something.pdf',
+            'attachable_id' => $comment->id,
+            'attachable_type' => Comment::class
+        ]);
 
-    //     $response = $this->get('/attachments');
-    //     $response->assertStatus(200);
-    //     $response->assertSee('something.jpg');
-    //     $response->assertSee('something.pdf');
-    //     $response->assertSee('Task');
-    //     $response->assertSee('Comment');
-    // }
+        $response = $this->get('/attachments');
+        $response->assertStatus(200);
+        $response->assertSee('something.jpg');
+        $response->assertSee('something.pdf');
+        $response->assertSee('Task');
+        $response->assertSee('Comment');
+    }
 
     // // TASK: add a record to belongstomany relationship
     // public function test_belongstomany_add()
