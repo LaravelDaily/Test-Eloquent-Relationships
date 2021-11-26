@@ -11,10 +11,10 @@ class Team extends Model
 
     protected $fillable = ['name', 'size'];
 
-    public function users()
+    public function user()
     {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }
