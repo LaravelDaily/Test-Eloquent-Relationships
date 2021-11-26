@@ -38,23 +38,23 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // // TASK: define the two-level relationship in the User model
-    // public function test_show_users_comments()
-    // {
-    //     $user = User::factory()->create();
-    //     $task = Task::create([
-    //         'users_id' => $user->id,
-    //         'name' => 'Some task'
-    //     ]);
-    //     Comment::create([
-    //         'task_id' => $task->id,
-    //         'name' => 'Some name',
-    //         'comment' => 'Some comment'
-    //     ]);
+    // TASK: define the two-level relationship in the User model
+    public function test_show_users_comments()
+    {
+        $user = User::factory()->create();
+        $task = Task::create([
+            'users_id' => $user->id,
+            'name' => 'Some task'
+        ]);
+        Comment::create([
+            'task_id' => $task->id,
+            'name' => 'Some name',
+            'comment' => 'Some comment'
+        ]);
 
-    //     $response = $this->get('/users/' . $user->id);
-    //     $response->assertStatus(200);
-    // }
+        $response = $this->get('/users/' . $user->id);
+        $response->assertStatus(200);
+    }
 
     // // TASK: pivot table name in the list
     // public function test_show_roles_with_users()
