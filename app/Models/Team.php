@@ -9,12 +9,12 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'size'];
+    protected $fillable = ['name', 'size','country_id'];
 
     public function users()
     {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot(['position','created_at']);
     }
 
 }
