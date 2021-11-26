@@ -21,6 +21,8 @@ class RelationshipsTest extends TestCase
     // TASK: find out why this relationship fails, and fix it in Eloquent Model
     public function test_user_create_task()
     {
+        $this->withoutExceptionHandling();
+        
         $user = User::factory()->create();
         $response = $this->actingAs($user)->post('/tasks', [
             'name' => 'Some task'
@@ -31,6 +33,8 @@ class RelationshipsTest extends TestCase
     // TASK: this table throws an error, fix it
     public function test_task_with_no_user()
     {
+        $this->withoutExceptionHandling();
+        
         Task::create(['name' => 'Some task']);
 
         $response = $this->get('/tasks');
@@ -41,6 +45,8 @@ class RelationshipsTest extends TestCase
     // TASK: define the two-level relationship in the User model
     public function test_show_users_comments()
     {
+        $this->withoutExceptionHandling();
+        
         $user = User::factory()->create();
         $task = Task::create([
             'users_id' => $user->id,
@@ -59,6 +65,8 @@ class RelationshipsTest extends TestCase
     // TASK: pivot table name in the list
     public function test_show_roles_with_users()
     {
+        $this->withoutExceptionHandling();
+        
         $user = User::factory()->create();
         $role = Role::create(['name' => 'Admin']);
         DB::table('users_roles')->insert([
@@ -73,6 +81,8 @@ class RelationshipsTest extends TestCase
     // TASK: pivot table with extra fields
     public function test_teams_with_users()
     {
+        $this->withoutExceptionHandling();
+        
         $user = User::factory()->create();
         $team = Team::create(['name' => 'Team 1']);
         $createdAt = now()->toDateTimeString();
@@ -92,6 +102,8 @@ class RelationshipsTest extends TestCase
     // TASK: average number from the relationship
     public function test_countries_with_team_size()
     {
+        $this->withoutExceptionHandling();
+        
         $country = Country::create(['name' => 'United Kingdom']);
         Team::create([
             'name' => 'Team 1',
@@ -111,6 +123,8 @@ class RelationshipsTest extends TestCase
     // TASK: polymorphic relations
     public function test_attachments_polymorphic()
     {
+        $this->withoutExceptionHandling();
+        
         $task = Task::create(['name' => 'Some task']);
         $comment = Comment::create([
             'task_id' => $task->id,
@@ -139,6 +153,8 @@ class RelationshipsTest extends TestCase
     // TASK: add a record to belongstomany relationship
     public function test_belongstomany_add()
     {
+        $this->withoutExceptionHandling();
+
         $user = User::factory()->create();
         $project = Project::create(['name' => 'Some project']);
 
@@ -158,6 +174,8 @@ class RelationshipsTest extends TestCase
     // TASK: show only the users who have at least one project
     public function test_filter_users()
     {
+        $this->withoutExceptionHandling();
+        
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
         $project = Project::create(['name' => 'Some project']);
