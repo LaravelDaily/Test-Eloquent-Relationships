@@ -8,7 +8,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::withCount('projects')
+            ->having('projects_count', '>', 0)
+            ->get();
 
         return view('users.index', compact('users'));
     }
