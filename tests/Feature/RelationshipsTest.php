@@ -20,7 +20,7 @@ class RelationshipsTest extends TestCase
 
     // TASK: find out why this relationship fails, and fix it in Eloquent Model
     public function test_user_create_task()
-    {
+    {   
         $user = User::factory()->create();
         $response = $this->actingAs($user)->post('/tasks', [
             'name' => 'Some task'
