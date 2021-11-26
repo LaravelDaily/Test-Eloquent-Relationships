@@ -56,19 +56,19 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // // TASK: pivot table name in the list
-    // public function test_show_roles_with_users()
-    // {
-    //     $user = User::factory()->create();
-    //     $role = Role::create(['name' => 'Admin']);
-    //     DB::table('users_roles')->insert([
-    //         'role_id' => $role->id,
-    //         'user_id' => $user->id
-    //     ]);
+    // TASK: pivot table name in the list
+    public function test_show_roles_with_users()
+    {
+        $user = User::factory()->create();
+        $role = Role::create(['name' => 'Admin']);
+        DB::table('users_roles')->insert([
+            'role_id' => $role->id,
+            'user_id' => $user->id
+        ]);
 
-    //     $response = $this->get('/roles');
-    //     $response->assertStatus(200);
-    // }
+        $response = $this->get('/roles');
+        $response->assertStatus(200);
+    }
 
     // // TASK: pivot table with extra fields
     // public function test_teams_with_users()
