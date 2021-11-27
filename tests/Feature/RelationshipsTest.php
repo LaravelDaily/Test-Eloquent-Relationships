@@ -106,6 +106,7 @@ class RelationshipsTest extends TestCase
 
         $response = $this->get('/countries');
         $response->assertSee('avg team size 4');
+        $response->assertStatus(200);
     }
 
     // TASK: polymorphic relations
