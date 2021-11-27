@@ -9,7 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::query()
+            ->whereHas('projects')
+            ->with('projects')
+            ->get();
 
         return view('users.index', compact('users'));
     }
