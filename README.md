@@ -61,7 +61,7 @@ Test method `test_show_roles_with_users()`.
 
 ## Task 5. BelongsToMany - Extra Fields in Pivot Table.
 
-In the route `/teams`, the table should show the teams with users, each user with a few additional fields. Fix the relationship definition in `app/Models/Team.php` so that the Blade file `tasks/index.blade.php` would show the correct data.
+In the route `/teams`, the table should show the teams with users, each user with a few additional fields. Fix the relationship definition in `app/Models/Team.php` so that the Blade file `teams/index.blade.php` would show the correct data.
 
 Test method `test_teams_with_users()`.
 
