@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function store(Request $request)
     {
-        // TASK: Add one sentence to save the project to the logged-in user
-        //   by $request->project_id and with $request->start_date parameter
+        DB::beginTransaction();
+        try {
+            auth()->user()->projects()->attach($request->project_id, ['start_date' => now()->toDateString()]);
+
+            DB::commit();
+        } catch (Exception $exception){
+            DB::rollBack();
+            throw new Exception($exception->getMessage());
+        }
 
         return 'Success';
     }

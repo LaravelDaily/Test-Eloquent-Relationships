@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/.vagrant
+after.sh
+aliases
+.sudo_as_admin_successful
+.bash_aliases
