@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -42,18 +44,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function tasks()
+    public function tasks(): hasMany
     {
         // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class,'users_id','id');
     }
 
-    public function comments()
+    public function comments(): belongsToMany
     {
         // TASK: add the code here for two-level relationship
+        return $this->belongsToMany(Comment::class,'tasks','user_id','id','task_id','comnmet_id');
     }
 
-    public function projects()
+    public function projects(): belongsToMany
     {
         return $this->belongsToMany(Project::class)->withPivot('start_date');
     }
