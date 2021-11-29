@@ -30,7 +30,7 @@ Good luck!
 In `app/Models/User.php` file, the relationship is missing some parameter. Fix this.
 
 Test method `test_user_create_task()`.
-
+Passed
 ---
 
 ## Task 2. BelongsTo with Empty Relationship.
@@ -40,7 +40,7 @@ In the route `/tasks`, the table is loading with error, if it can't find the use
 There are multiple ways how to fix this, choose whichever way works for you.
 
 Test method `test_task_with_no_user()`.
-
+Passed
 ---
 
 ## Task 3. Two-level Relationship.
@@ -48,7 +48,7 @@ Test method `test_task_with_no_user()`.
 In the route `/users/{user}`, the table should load the comments that are written on the task that belong to a user. Define the relationship from User to Comment in the User model, so that the Blade file users/show.blade.php would work.
 
 Test method `test_show_users_comments()`.
-
+Passed
 ---
 
 ## Task 4. BelongsToMany - Pivot Table Name.
@@ -56,7 +56,7 @@ Test method `test_show_users_comments()`.
 In the route `/roles`, the table should load the roles with the number of users belonging to them. But the relationship in `app/Models/Role.php` model is defined incorrectly, fix that relationship definition.
 
 Test method `test_show_roles_with_users()`.
-
+Passed
 ---
 
 ## Task 5. BelongsToMany - Extra Fields in Pivot Table.
@@ -64,7 +64,7 @@ Test method `test_show_roles_with_users()`.
 In the route `/teams`, the table should show the teams with users, each user with a few additional fields. Fix the relationship definition in `app/Models/Team.php` so that the Blade file `teams/index.blade.php` would show the correct data.
 
 Test method `test_teams_with_users()`.
-
+Passed
 ---
 
 ## Task 6. HasMany - Average from Field Value
@@ -72,7 +72,7 @@ Test method `test_teams_with_users()`.
 In the route `/countries`, the table should show the countries with average team size. Fix the Controller to load the relationship number, as it is expected in the Blade.
 
 Test method `test_countries_with_team_size()`.
-
+Passed
 ---
 
 ## Task 7. Polymorphic Attachments
@@ -80,7 +80,7 @@ Test method `test_countries_with_team_size()`.
 In the route `/attachments`, the table should show the filenames and the class names of Task and Comment models. Fix the `app/Models/Attachment.php` relationship to make it work.
 
 Test method `test_attachments_polymorphic()`.
-
+Passed
 ---
 
 ## Task 8. Add BelongsToMany Row
@@ -88,7 +88,7 @@ Test method `test_attachments_polymorphic()`.
 In the POST route `/projects`, the project should be saved for a logged-in user, with start_date field from $request. Write that sentence in the Controller.
 
 Test method `test_belongstomany_add()`.
-
+Passed
 ---
 
 ## Task 9. Filter BelongsToMany Rows
