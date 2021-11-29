@@ -11,12 +11,13 @@ use App\Models\Task;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class RelationshipsTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase,WithoutMiddleware;
 
     // TASK: find out why this relationship fails, and fix it in Eloquent Model
     public function test_user_create_task()
@@ -53,6 +54,7 @@ class RelationshipsTest extends TestCase
         ]);
 
         $response = $this->get('/users/' . $user->id);
+        
         $response->assertStatus(200);
     }
 
@@ -144,7 +146,7 @@ class RelationshipsTest extends TestCase
         $project = Project::create(['name' => 'Some project']);
 
         $response = $this->actingAs($user)->post('/projects', [
-            'project_id' => $project->id,
+            'project_id' =>   $project->id,
             'start_date' => now()->toDateString()
         ]);
         $response->assertStatus(200);
