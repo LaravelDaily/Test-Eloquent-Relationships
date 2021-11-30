@@ -51,7 +51,6 @@ class RelationshipsTest extends TestCase
             'name' => 'Some name',
             'comment' => 'Some comment'
         ]);
-
         $response = $this->get('/users/' . $user->id);
         $response->assertStatus(200);
     }
@@ -146,6 +145,7 @@ class RelationshipsTest extends TestCase
             'project_id' => $project->id,
             'start_date' => now()->toDateString()
         ]);
+        
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('project_user', [
@@ -171,4 +171,5 @@ class RelationshipsTest extends TestCase
         $response->assertSee($user1->email);
         $response->assertDontSee($user2->email);
     }
+    
 }

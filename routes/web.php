@@ -23,6 +23,7 @@ Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
 
 Route::get('users', [\App\Http\Controllers\UserController::class, 'index']);
 Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
+Route::get('test', [\App\Http\Controllers\UserController::class, 'test']);
 
 Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
 
@@ -33,4 +34,6 @@ Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index'
 Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']);
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
+
+
 
