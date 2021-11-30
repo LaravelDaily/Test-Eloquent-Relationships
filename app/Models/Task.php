@@ -13,6 +13,12 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id')
+            ->withDefault();
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }
