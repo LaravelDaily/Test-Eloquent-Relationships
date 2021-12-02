@@ -15,4 +15,14 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'users_id');
     }
+
+    public function getUserNameAttribute()
+    {
+       return $this->user ? $this->user->name : 'Guest';
+    }
+
+    public function attachments()
+    {
+        return $this->morphOne(Attachment::class, 'attachable');
+    }
 }
