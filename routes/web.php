@@ -35,12 +35,3 @@ Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index'
 Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']);
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
-
-Route::get('/test', function(){
-
-    $countries = Country::all();
-
-    $user = User::firstOrCreate(['name'=>'hi'],['email'=>'email.@jf.11com','password'=>'pass']);
-    // $user->update(['email' => 'eeee']);
-    ddd($countries->first()->teams_avg_size);
-});
