@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Models\Country;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,11 @@ Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'i
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
 
+Route::get('/test', function(){
+
+    $countries = Country::all();
+
+    $user = User::firstOrCreate(['name'=>'hi'],['email'=>'email.@jf.11com','password'=>'pass']);
+    // $user->update(['email' => 'eeee']);
+    ddd($countries->first()->teams_avg_size);
+});
