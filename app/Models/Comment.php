@@ -15,4 +15,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function attachable()
+    {
+        return $this->morphMany(Attachment::class,'attachable_type');
+    }
 }
