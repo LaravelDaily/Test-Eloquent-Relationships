@@ -11,8 +11,13 @@ class Task extends Model
 
     protected $fillable = ['name', 'users_id'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class, 'users_id');
+
+        return $this->belongsTo(User::class, 'users_id', 'id');
+    }
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }
