@@ -32,7 +32,6 @@ class RelationshipsTest extends TestCase
     public function test_task_with_no_user()
     {
         Task::create(['name' => 'Some task']);
-
         $response = $this->get('/tasks');
         $response->assertSeeText('Some task');
         $response->assertStatus(200);
