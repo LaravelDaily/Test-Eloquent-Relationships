@@ -8,7 +8,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->filter(function (User $user) {
+            if ($user->projects()->count() > 0) {
+                return $user;
+            }
+        });
 
         return view('users.index', compact('users'));
     }
