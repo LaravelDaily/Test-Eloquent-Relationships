@@ -16,7 +16,6 @@ If you don't know how to make a Pull Request, [here's my video with instructions
 
 This task is mostly self-served, so I'm not planning review or merge the Pull Requests. This test is for yourselves to assess your skills, the automated tests will be your answer if you passed the test :)
 
-
 ## Questions / Problems?
 
 If you're struggling with some tasks, or you have suggestions how to improve the task, create a GitHub Issue.
@@ -65,6 +64,17 @@ In the route `/teams`, the table should show the teams with users, each user wit
 
 Test method `test_teams_with_users()`.
 
+```
+{{ $team->name }}
+<ul>
+    @foreach ($team->users as $user)
+        {{ $user->name }}:
+            position {{ $user->pivot->position }},
+            started at {{ $user->pivot->created_at }}
+    @endforeach
+</ul>
+```
+
 ---
 
 ## Task 6. HasMany - Average from Field Value
@@ -99,3 +109,4 @@ Test method `test_filter_users()`.
 
 ---
 
+````
