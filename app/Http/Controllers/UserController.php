@@ -15,8 +15,6 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $user = User::with('comments')->get();
-        
         return view('users.show', compact('user'));
     }
 }
