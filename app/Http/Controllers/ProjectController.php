@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -10,6 +11,10 @@ class ProjectController extends Controller
     {
         // TASK: Add one sentence to save the project to the logged-in user
         //   by $request->project_id and with $request->start_date parameter
+        $request->user()->projects()->attach($request->user()->id, [
+            'project_id' => $request->project_id,
+            'start_date' => $request->start_date,
+        ]);
 
         return 'Success';
     }
