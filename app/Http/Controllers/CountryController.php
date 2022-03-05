@@ -9,6 +9,7 @@ class CountryController extends Controller
     public function index()
     {
         // TASK: load the relationship average of team size
+<<<<<<< HEAD
         $countries = Country::withAvg('teams','size')->get();
 
         /*
@@ -24,6 +25,9 @@ class CountryController extends Controller
 //            $avgSize = $avgSize / $count;
 //            $country['teams_avg_size'] = $avgSize;
 //        }
+=======
+        $countries = Country::all();
+>>>>>>> fa61e15864560f8e0111ee58875e20cddd146138
 
         return view('countries.index', compact('countries'));
     }
