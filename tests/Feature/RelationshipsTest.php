@@ -92,7 +92,11 @@ class RelationshipsTest extends TestCase
     // TASK: average number from the relationship
     public function test_countries_with_team_size()
     {
+<<<<<<< HEAD
+        $country = Country::create(['name' => 'United Kigdom']);
+=======
         $country = Country::create(['name' => 'United Kingdom']);
+>>>>>>> fa61e15864560f8e0111ee58875e20cddd146138
         Team::create([
             'name' => 'Team 1',
             'country_id' => $country->id,
