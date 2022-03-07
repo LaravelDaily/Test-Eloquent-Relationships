@@ -22,7 +22,7 @@ class RelationshipsTest extends TestCase
     public function test_user_create_task()
     {
         $user = User::factory()->create();
-        $response = $this->actingAs($user)->post('/tasks', [
+        $response = $this->actingAs($user->id)->post('/tasks', [
             'name' => 'Some task'
         ]);
         $response->assertStatus(200);
