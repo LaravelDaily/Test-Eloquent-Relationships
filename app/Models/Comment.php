@@ -15,4 +15,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function attachment(){
+        return $this->morphOne(Attachment::class, 'attachment');
+    }
 }
