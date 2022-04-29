@@ -10,6 +10,10 @@ class ProjectController extends Controller
     {
         // TASK: Add one sentence to save the project to the logged-in user
         //   by $request->project_id and with $request->start_date parameter
+        auth()->user()->projects()->create([
+            'name'=>$request->name
+        ]);
+        
 
         return 'Success';
     }
