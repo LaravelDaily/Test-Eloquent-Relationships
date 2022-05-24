@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role extends Model
 {
@@ -14,6 +15,6 @@ class Role extends Model
     public function users()
     {
         // TASK: fix this by adding a parameter
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'users_roles', 'role_id', 'user_id');
     }
 }
