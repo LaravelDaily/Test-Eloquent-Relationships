@@ -1,5 +1,7 @@
 <ul>
-    @foreach ($countries as $country)
+    @forelse ($countries as $country)
         <li>{{ $country->name }} (avg team size {{ $country->teams_avg_size }})</li>
-    @endforeach
+    @empty
+        <p>No countries found..</p>
+    @endforelse
 </ul>

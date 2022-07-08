@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
 {
@@ -11,10 +13,14 @@ class Team extends Model
 
     protected $fillable = ['name', 'size', 'country_id'];
 
-    public function users()
+    public function users(): BelongsToMany
     {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'team_user', 'user_id', 'team_id')->withPivot('position', 'created_at');
     }
 
+    public function countries(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
+    }
 }
