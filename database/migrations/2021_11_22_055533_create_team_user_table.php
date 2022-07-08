@@ -14,8 +14,9 @@ class CreateTeamUserTable extends Migration
     public function up()
     {
         Schema::create('team_user', function (Blueprint $table) {
-            $table->foreignId('team_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->primary(['team_id', 'user_id']);
+            $table->foreignId('team_id')->constrained('teams');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('position');
             $table->timestamps();
         });
