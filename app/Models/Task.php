@@ -13,6 +13,7 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        // if in elqouent relation one to many forien_id is null we can return defalut model 
+        return $this->belongsTo(User::class, 'users_id')->withDefault();
     }
 }
