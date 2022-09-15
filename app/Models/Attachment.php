@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Task;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Attachment extends Model
 {
@@ -14,5 +16,6 @@ class Attachment extends Model
     public function attachable()
     {
         // TASK: fill in the code to make it work
+        return $this->morphTo();
     }
 }
