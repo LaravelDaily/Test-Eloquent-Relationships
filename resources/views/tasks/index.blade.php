@@ -6,4 +6,5 @@
             <li>{{ $task->name }} ({{ $task->user->name }})</li>
         @endif
     @endforeach
+    
 </ul>
