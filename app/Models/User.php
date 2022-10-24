@@ -46,6 +46,7 @@ class User extends Authenticatable
     {
         // TASK: fix this by adding a parameter
         return $this->hasMany(Task::class, 'Users_id');
+        
     }
 
     public function comments()
