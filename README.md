@@ -29,7 +29,7 @@ Good luck!
 
 In `app/Models/User.php` file, the relationship is missing some parameter. Fix this.
 
-Test method `test_user_create_task()`.
+Test method `test_user_create_task(X)`.
 
 ---
 
