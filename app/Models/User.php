@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,16 +44,18 @@ class User extends Authenticatable
     public function tasks()
     {
         // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class, 'users_id');
     }
 
     public function comments()
     {
+        return $this->hasManyThrough(Comment::class, Task::class, 'users_id', 'task_id', 'id', 'id');
         // TASK: add the code here for two-level relationship
     }
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class)->withPivot('start_date');
+        return $this->belongsToMany(Project::class)
+                    ->withPivot('start_date');
     }
 }
