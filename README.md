@@ -51,7 +51,7 @@ Test method `test_show_users_comments()`.
 
 ---
 
-## Task 4. BelongsToMany - Pivot Table Name.
+## Task 4. BelongsToMany - Pivot Table Name. 
 
 In the route `/roles`, the table should load the roles with the number of users belonging to them. But the relationship in `app/Models/Role.php` model is defined incorrectly, fix that relationship definition.
 
@@ -59,7 +59,7 @@ Test method `test_show_roles_with_users()`.
 
 ---
 
-## Task 5. BelongsToMany - Extra Fields in Pivot Table.
+## Task 5. BelongsToMany - Extra Fields in Pivot Table. 
 
 In the route `/teams`, the table should show the teams with users, each user with a few additional fields. Fix the relationship definition in `app/Models/Team.php` so that the Blade file `teams/index.blade.php` would show the correct data.
 
@@ -67,7 +67,7 @@ Test method `test_teams_with_users()`.
 
 ---
 
-## Task 6. HasMany - Average from Field Value
+## Task 6. HasMany - Average from Field Value  
 
 In the route `/countries`, the table should show the countries with average team size. Fix the Controller to load the relationship number, as it is expected in the Blade.
 
@@ -83,7 +83,7 @@ Test method `test_attachments_polymorphic()`.
 
 ---
 
-## Task 8. Add BelongsToMany Row
+## Task 8. Add BelongsToMany Row * 
 
 In the POST route `/projects`, the project should be saved for a logged-in user, with start_date field from $request. Write that sentence in the Controller.
 
