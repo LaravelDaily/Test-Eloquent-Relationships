@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::withCount('projects')->get()->where('projects_count', '>', '0');
 
         return view('users.index', compact('users'));
     }
