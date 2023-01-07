@@ -58,7 +58,7 @@ class User extends Authenticatable
             'task_id',
             'id',
             'id'
-        )
+        );
     }
 
     public function projects()
