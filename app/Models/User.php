@@ -59,5 +59,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Project::class)->withPivot('start_date');
     }
 
-    
 }
