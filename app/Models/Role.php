@@ -14,6 +14,6 @@ class Role extends Model
     public function users()
     {
         // TASK: fix this by adding a parameter
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'team_user','user_id','team_id')->withPivot('position','created_at');
     }
 }
