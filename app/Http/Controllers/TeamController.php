@@ -8,7 +8,9 @@ class TeamController extends Controller
 {
     public function index()
     {
-        $teams = Team::with('users')->get();
+        $teams = Team::with('users')
+            ->withPivot(['created_at', 'position'])
+            ->get();
 
         return view('teams.index', compact('teams'));
     }

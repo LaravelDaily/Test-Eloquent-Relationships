@@ -45,12 +45,24 @@ class User extends Authenticatable
     public function tasks()
     {
         // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class, 'users_id');
     }
 
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function comments()
     {
-        // TASK: add the code here for two-level relationship
+        return $this->hasManyThrough(
+            Comment::class,
+            Task::class,
+            'users_id',
+            'task_id',
+            'id',
+            'id'
+        );
     }
 
     public function projects()

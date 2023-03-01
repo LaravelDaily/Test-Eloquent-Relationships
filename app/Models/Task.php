@@ -15,4 +15,12 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'users_id');
     }
+
+    /**
+     * Get the task's attachment.
+     */
+    public function attachment()
+    {
+        return $this->morphOne(Attachment::class, 'attachable');
+    }
 }

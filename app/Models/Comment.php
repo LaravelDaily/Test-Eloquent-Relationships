@@ -15,4 +15,12 @@ class Comment extends Model
     {
         return $this->belongsTo(Task::class);
     }
+
+    /**
+     * Get the comment's attachment.
+     */
+    public function attachment()
+    {
+        return $this->morphOne(Attachment::class, 'attachable');
+    }
 }
