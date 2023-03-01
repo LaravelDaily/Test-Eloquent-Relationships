@@ -10,9 +10,17 @@ class Country extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+    protected $appends = ['teams_avg_size'];
+    protected $with = ['teams'];
 
     public function teams()
     {
         return $this->hasMany(Team::class);
+    }
+
+    public function getTeamsAvgSizeAttribute()
+    {
+
+        return $this->teams()->avg('size');
     }
 }
