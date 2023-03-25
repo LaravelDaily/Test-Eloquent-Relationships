@@ -14,6 +14,6 @@ class Attachment extends Model
     public function attachable()
     {
         // TASK: fill in the code to make it work
-        return $this->morphTo(__FUNCTION__, 'attachable_id', 'attachable_type');
+        return $this->morphTo();
     }
 }
