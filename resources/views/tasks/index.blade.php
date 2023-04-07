@@ -1,5 +1,5 @@
 <ul>
     @foreach ($tasks as $task)
-        <li>{{ $task->name }} ({{ $task->user->name }})</li>
+        <li>{{ $task->name }} @isset($task->user->name) {{ $task->user->name }})@endisset</li>
     @endforeach
 </ul>
