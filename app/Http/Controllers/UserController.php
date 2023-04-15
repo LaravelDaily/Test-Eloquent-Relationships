@@ -6,15 +6,15 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
+	public function index()
+	{
+		$users = User::query()->whereHas('projects')->get();
 
-        return view('users.index', compact('users'));
-    }
+		return view('users.index', compact('users'));
+	}
 
-    public function show(User $user)
-    {
-        return view('users.show', compact('user'));
-    }
+	public function show(User $user)
+	{
+		return view('users.show', compact('user'));
+	}
 }

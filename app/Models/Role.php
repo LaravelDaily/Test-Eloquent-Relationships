@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $fillable = ['name'];
+	protected $fillable = ['name'];
 
-    public function users()
-    {
-        // TASK: fix this by adding a parameter
-        return $this->belongsToMany(User::class);
-    }
+	public function users()
+	{
+		// TASK: fix this by adding a parameter ✅
+		return $this->belongsToMany(User::class, 'users_roles');
+	}
 }
