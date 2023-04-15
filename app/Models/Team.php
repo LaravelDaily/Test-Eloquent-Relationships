@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $fillable = ['name', 'size', 'country_id'];
+	protected $fillable = ['name', 'size', 'country_id'];
 
-    public function users()
-    {
-        // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
-    }
-
+	public function users()
+	{
+		// TASK: fix this by adding some extra code ✅
+		return $this->belongsToMany(User::class)->withPivot('position', 'created_at');
+	}
 }
