@@ -51,7 +51,7 @@ class User extends Authenticatable
     public function comments()
     {
         // TASK: add the code here for two-level relationship
-        return $this->hasMany(Comment::class, 'users_id');
+        return $this->hasManyThrough(Comment::class, Task::class, 'users_id');
     }
 
     public function projects()
