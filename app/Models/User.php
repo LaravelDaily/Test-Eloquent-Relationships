@@ -45,12 +45,15 @@ class User extends Authenticatable
     public function tasks()
     {
         // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class,'users_id');
     }
 
     public function comments()
     {
+        // Eğer 'comments' tablosu, 'tasks' tablosu ile ilişkili ise ve 'tasks' tablosunda da 'users' tablosu ile ilişkili bir
+        // foreign key sütunu bulunuyorsa, aşağıdaki gibi iki seviyeli bir ilişkiyi tanımlayabilirsiniz:
         // TASK: add the code here for two-level relationship
+        return $this->hasManyThrough(Comment::class, Task::class,'users_id','task_id'); //'task_id' is not neccesary, Because it uses proper naming(Model_id with snake case).
     }
 
     public function projects()
