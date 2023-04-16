@@ -13,6 +13,7 @@ class Comment extends Model
 
     public function task()
     {
+        // Comment task relationship
         return $this->belongsTo(Task::class);
     }
 }
