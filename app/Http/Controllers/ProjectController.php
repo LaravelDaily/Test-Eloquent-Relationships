@@ -15,10 +15,11 @@ class ProjectController extends Controller
         $user = Auth::user();
 
         $project = new Project();
-        $project->project_id = $request->project_id;
-        $project->save();
 
-        $user->projects()->attach($project, ['start_date' => $request->start_date]);
+        $user->projects()->attach($project, [
+            'project_id' => $request->project_id,
+            'start_date' => $request->start_date
+        ]);
 
         return 'Success';
     }
