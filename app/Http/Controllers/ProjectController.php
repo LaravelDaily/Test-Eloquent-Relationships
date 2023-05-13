@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -11,11 +12,13 @@ class ProjectController extends Controller
     {
         // TASK: Add one sentence to save the project to the logged-in user
         //   by $request->project_id and with $request->start_date parameter
+        $user = Auth::user();
+
         $project = new Project();
         $project->project_id = $request->project_id;
-        $project->users_id = auth()->user()->id;
-        $project->start_date = $request->start_date;
         $project->save();
+
+        $user->projects()->attach($project, ['start_date' => $request->start_date]);
 
         return 'Success';
     }
