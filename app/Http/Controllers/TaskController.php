@@ -17,6 +17,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         // TASK: find out why this sentence fails, and fix it in Eloquent Model
+//        dd(auth()->user()->tasks());
         auth()->user()->tasks()->create([
             'name' => $request->name
         ]);
