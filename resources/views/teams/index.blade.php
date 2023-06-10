@@ -4,9 +4,11 @@
             {{ $team->name }}
             <ul>
                 @foreach ($team->users as $user)
-                    {{ $user->name }}:
+                    <li>
+                        {{ $user->name }}:
                         position {{ $user->pivot->position }},
                         started at {{ $user->pivot->created_at }}
+                    </li>
                 @endforeach
             </ul>
         </li>
