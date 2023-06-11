@@ -9,10 +9,11 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['task_id', 'name', 'comment'];
+    protected $guarded = [];
 
     public function task()
     {
         return $this->belongsTo(Task::class);
     }
+
 }
