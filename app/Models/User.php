@@ -44,7 +44,6 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        // TASK: fix this by adding a parameter
         return $this->hasMany(Task::class, 'users_id');
     }
 
