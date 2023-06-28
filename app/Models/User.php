@@ -44,13 +44,13 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        // TASK: fix this by adding a parameter
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class, 'users_id');
     }
 
     public function comments()
     {
         // TASK: add the code here for two-level relationship
+        return $this->hasManyThrough(Task::class, Comment::class, 'task_id', 'users_id');
     }
 
     public function projects()
