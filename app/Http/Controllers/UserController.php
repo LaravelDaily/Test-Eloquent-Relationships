@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\User;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::has('projects')->get();
 
         return view('users.index', compact('users'));
     }
