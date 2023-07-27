@@ -1,13 +1,4 @@
 <ul>
-    @foreach ($tasks as $task)
-    @if($task->user->name->exists())
-    
+    @foreach ($tasks as $task)    
         <li>{{ $task->name }} ({{ $task->user->name }})</li>
-    
-    @else
-    
-        <li>{{ $task->name }}</li>
-    
-    @endif
-        @endforeach
 </ul>
