@@ -19,9 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('tasks', [TaskController::class, 'index']);
+
 Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
 
 Route::get('users', [\App\Http\Controllers\UserController::class, 'index']);
+
 Route::get('users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
 
 Route::get('roles', [\App\Http\Controllers\RoleController::class, 'index']);
