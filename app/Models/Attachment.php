@@ -11,7 +11,7 @@ class Attachment extends Model
 
     protected $fillable = ['filename', 'attachable_id', 'attachable_type'];
 
-    public function attachable(): MorphTo
+    public function attachable()
     {
         // TASK: fill in the code to make it work
         return $this->morphTo();
