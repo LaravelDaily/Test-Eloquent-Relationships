@@ -15,9 +15,4 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'users_id')->withDefault();
     }
-
-    public function attachment(): MorphOne
-    {
-        return $this->morphOne(Attachment::class, 'attachable');
-    }
 }
