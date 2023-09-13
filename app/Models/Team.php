@@ -14,7 +14,7 @@ class Team extends Model
     public function users()
     {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class)->withPivot('active', 'created_by');
+        return $this->belongsToMany(User::class)->withPivot('create_at', 'position');
     }
 
 }
