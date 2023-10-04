@@ -8,13 +8,15 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::has('projects')->get();
 
         return view('users.index', compact('users'));
     }
+
 
     public function show(User $user)
     {
         return view('users.show', compact('user'));
     }
+
 }
