@@ -8,7 +8,8 @@ class AttachmentController extends Controller
 {
     public function index()
     {
-        $attachments = Attachment::all();
+        $attachments = Attachment::all()
+            ->loadMorph('attachable', 'attachments');
 
         return view('attachments.index', compact('attachments'));
     }
