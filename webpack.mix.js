@@ -15,3 +15,17 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.runtime.esm.js'
+        }
+    }
+});
+
+mix.js('resources/js/app.js', 'public/js')
+    .vue();
