@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\TaskController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('tasks', [TaskController::class, 'index']);
 Route::post('tasks', [TaskController::class, 'store'])->middleware('auth');
@@ -34,3 +36,7 @@ Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'i
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
