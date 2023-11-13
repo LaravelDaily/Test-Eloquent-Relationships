@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('user')->paginate();
+        $tasks = Task::with('users')->paginate();
 
         return view('tasks.index', compact('tasks'));
     }
