@@ -14,6 +14,6 @@ class Task extends Model
     public function user()
     {
         //return $this->belongsTo(User::class, 'users_id');
-         return $this->belongsToMany(User::class,'users_roles');
+        return $this->belongsTo(User::class, 'users_id')->withDefault();
     }
 }
