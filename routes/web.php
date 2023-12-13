@@ -14,6 +14,8 @@ use App\Http\Controllers\TaskController;
 |
 */
 
+// adding env
+
 Route::get('/', function () {
     return view('welcome');
 });
