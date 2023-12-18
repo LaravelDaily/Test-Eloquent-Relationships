@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use App\Models\Project;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class ProjectController extends Controller
+class Project extends Model
 {
-    public function store(Request $request)
-    {
-        $user = auth()->user();
+    use HasFactory;
 
-        // Assuming 'project_user' is the name of the pivot table
-        $user->projects()->attach($request->project_id, ['start_date' => $request->start_date]);
-
-        return 'Project added successfully';
-    }
+    protected $fillable = ['name'];
 }
