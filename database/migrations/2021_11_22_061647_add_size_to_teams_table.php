@@ -26,7 +26,7 @@ class AddSizeToTeamsTable extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            //
+             $table->dropColumn('size');
         });
     }
 }

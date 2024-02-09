@@ -16,6 +16,8 @@ class CreateUsersRolesTable extends Migration
         Schema::create('users_roles', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
             $table->foreignId('role_id')->constrained();
+            $table->primary(['user_id', 'role_id']);
+
         });
     }
 

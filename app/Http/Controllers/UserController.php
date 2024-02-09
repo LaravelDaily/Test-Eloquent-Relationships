@@ -8,7 +8,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        //the list should show only the users with at least one project
+        //
+
+        $users = User::has('projects')->get();
 
         return view('users.index', compact('users'));
     }

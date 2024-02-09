@@ -26,7 +26,8 @@ class AddCountryIdToTeamsTable extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            //
-        });
+             $table->dropForeign(['country_id']);
+             $table->dropColumn('country_id');
+    });
     }
 }
