@@ -51,7 +51,7 @@ class User extends Authenticatable
     public function comments()
     {
         // TASK: add the code here for two-level relationship
-        returen $this->throughTasks()->hasComments();
+        return $this->throughTasks()->hasComments();
     }
 
     public function projects()
