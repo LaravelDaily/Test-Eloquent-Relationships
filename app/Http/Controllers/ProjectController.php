@@ -12,6 +12,7 @@ class ProjectController extends Controller
         //   by $request->project_id and with $request->start_date parameter
         auth()->user()->projects()->create([
             'project_id' => $request->project_id,
+            'name' => $request->name,
             'start_date' => $request->start_date,
         ]);
         
