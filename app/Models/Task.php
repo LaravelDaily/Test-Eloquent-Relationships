@@ -16,6 +16,11 @@ class Task extends Model
         return $this->belongsTo(User::class, 'users_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function attachments()
     {
         return $this->morphMany(Attachment::class, 'attachable');
