@@ -33,4 +33,3 @@ Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index'
 Route::get('attachments', [\App\Http\Controllers\AttachmentController::class, 'index']);
 
 Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store'])->middleware('auth');
-
