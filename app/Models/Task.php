@@ -13,6 +13,13 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id')->withDefault([
+            'name' => 'Guest Author',
+        ]);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
