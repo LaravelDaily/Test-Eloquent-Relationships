@@ -15,4 +15,5 @@ class Country extends Model
     {
         return $this->hasMany(Team::class);
     }
+
 }
