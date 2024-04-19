@@ -13,6 +13,10 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id', 'id')->withDefault(['name' => 'Some task']);
+    }
+
+    public function attach(){
+        return $this->morphOne(Task::class, 'attachable');
     }
 }
