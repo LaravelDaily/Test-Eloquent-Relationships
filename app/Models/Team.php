@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     protected $fillable = ['name', 'size', 'country_id'];
 
     public function users()
     {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'team_user', 'team_id', 'user_id')->withTimestamps()
+        ->withPivot(['position']);
     }
 
 }
