@@ -9,7 +9,12 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['task_id', 'name', 'comment'];
+    protected $fillable = ['task_id','name', 'comment'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function task()
     {
