@@ -1,5 +1,5 @@
 <ul>
     @foreach ($countries as $country)
-        <li>{{ $country->name }} (avg team size {{ $country->teams_avg_size }})</li>
+        <li>{{ $country->name }} (avg team size {{ $country->teams()->pluck('size')->avg(); }})</li>
     @endforeach
 </ul>
