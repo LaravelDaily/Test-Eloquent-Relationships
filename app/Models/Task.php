@@ -13,6 +13,16 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        // return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id')
+                    ->withDefault([
+                        'name' => '',
+                    ]);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'task_id');
+    }
+
 }
