@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
@@ -11,9 +12,9 @@ class Role extends Model
 
     protected $fillable = ['name'];
 
-    public function users()
+    public function users(): BelongsToMany
     {
         // TASK: fix this by adding a parameter
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'users_roles', 'role_id', 'user_id');
     }
 }

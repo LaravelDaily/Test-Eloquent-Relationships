@@ -8,7 +8,7 @@ class TeamController extends Controller
 {
     public function index()
     {
-        $teams = Team::with('users')->get();
+        $teams = Team::with('users','name','email')->get();
 
         return view('teams.index', compact('teams'));
     }
