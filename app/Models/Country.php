@@ -15,4 +15,10 @@ class Country extends Model
     {
         return $this->hasMany(Team::class);
     }
+
+    public function averageTeamSize() {
+        return $this->teams()
+            ->selectRaw('avg(size) as aggregate, country_id')
+            ->groupBy('country_id');
+    }
 }
