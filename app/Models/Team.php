@@ -13,8 +13,8 @@ class Team extends Model
 
     public function users()
     {
-        // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        // TASK: fix this by adding some extra code [done]
+        return $this->belongsToMany(User::class)->withPivot('position', 'created_at');
     }
 
 }

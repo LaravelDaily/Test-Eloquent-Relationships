@@ -8,8 +8,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        // TASK: load the relationship average of team size
-        $countries = Country::all();
+        // TASK: load the relationship average of team size [done]
+        $countries = Country::withAvg('team', 'size')->get();
 
         return view('countries.index', compact('countries'));
     }
