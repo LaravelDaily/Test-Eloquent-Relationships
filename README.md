@@ -21,7 +21,7 @@ This task is mostly self-served, so I'm not planning review or merge the Pull Re
 
 If you're struggling with some tasks, or you have suggestions how to improve the task, create a GitHub Issue.
 
-Good luck!
+Good luck! 
 
 ---
 
