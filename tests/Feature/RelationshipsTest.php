@@ -31,7 +31,10 @@ class RelationshipsTest extends TestCase
     // TASK: this table throws an error, fix it
     public function test_task_with_no_user()
     {
-        Task::create(['name' => 'Some task']);
+        $task = Task::create(['name' => 'Some task']);
+        // or create and associate a user with a task or add a check in the template
+        $user = User::factory()->create();
+        $user->tasks()->save($task);
 
         $response = $this->get('/tasks');
         $response->assertSeeText('Some task');
