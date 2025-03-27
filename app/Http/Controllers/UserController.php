@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::has('projects')->get();
 
         return view('users.index', compact('users'));
     }
