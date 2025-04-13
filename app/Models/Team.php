@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Team extends Model
-{
+class Team extends Model {
     use HasFactory;
 
     protected $fillable = ['name', 'size', 'country_id'];
 
-    public function users()
-    {
+    public function users() {
         // TASK: fix this by adding some extra code
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'team_user')->withPivot('position', 'created_at');
     }
-
 }
